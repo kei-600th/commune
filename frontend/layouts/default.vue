@@ -52,12 +52,23 @@
       <v-spacer />
 
 
-      <v-btn
-        class="ma-2"
-        color="orange darken-2"
-        dark
-      >新規登録
-      </v-btn>
+      <v-dialog
+        width="500"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="ma-2"
+            color="orange darken-2"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            新規登録
+          </v-btn>
+        </template>
+
+        <UserSignUp />
+      </v-dialog>
 
       <v-btn
         class="ma-2"
@@ -74,6 +85,18 @@
       >
         ログアウト
       </v-btn>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -117,7 +140,13 @@
 </template>
 
 <script>
+
+import UserSignUp from '../components/users/UserSignUp';
+
 export default {
+  components: {
+    UserSignUp,
+  },
   data () {
     return {
       clipped: false,
@@ -145,6 +174,6 @@ export default {
       rightDrawer: false,
       title: 'Vuetify.js'
     }
-  }
+  },
 }
 </script>
