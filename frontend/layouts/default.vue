@@ -70,13 +70,29 @@
         <UserSignUp />
       </v-dialog>
 
-      <v-btn
-        class="ma-2"
-        color="primary"
-        dark
+
+
+
+      <v-dialog
+        width="500"
       >
-        ログイン
-      </v-btn>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="ma-2"
+            color="primary"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            ログイン
+          </v-btn>
+        </template>
+
+        <UserSignIn />
+      </v-dialog>
+
+
+
 
       <v-btn
         class="ma-2"
@@ -142,10 +158,12 @@
 <script>
 
 import UserSignUp from '../components/users/UserSignUp';
+import UserSignIn from '../components/users/UserSignIn';
 
 export default {
   components: {
     UserSignUp,
+    UserSignIn,
   },
   data () {
     return {
