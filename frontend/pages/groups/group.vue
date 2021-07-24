@@ -17,24 +17,54 @@
         </v-row>
       </v-container>
     </v-main>
+
+    <v-dialog :value="group !== null">
+      <GroupDetailDialog v-if="group !== null && !isEditMode" />
+      <GroupFormDialog v-if="group !== null && isEditMode" />
+    </v-dialog>
+
+    <v-btn
+      class="mx-2"
+      fab
+      dark
+      color="indigo"
+      @click="initGroup"
+    >
+      <v-icon dark>
+        mdi-plus
+      </v-icon>
+    </v-btn>
   </div>
   
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import GroupDetailDialog from '../groups/dialogs/GroupDetailDialog';
+import GroupFormDialog from '../groups/dialogs/GroupFormDialog';
+
 export default {
-  name: "Top",
+  name: "Group",
+  components: {
+    GroupDetailDialog,
+    GroupFormDialog,
+  },
+  data: () => ({
+  }),
   computed: {
-    ...mapGetters("groups", ["groups"]),
+    ...mapGetters("groups", ["groups", 'group', 'isEditMode']),
   },
   created() {
     this.fetchGroups();
   },
   methods: {
-    ...mapActions("groups", ["fetchGroups"]),
-    showGroup(event) {
-      console.log(event.name)
+    ...mapActions("groups", ["fetchGroups", 'setGroup', 'setEditMode']),
+    showGroup(group) {
+      this.setGroup(group);
+    },
+    initGroup() {
+      this.setGroup({ name: ''});
+      this.setEditMode(true);
     },
   },
 };
