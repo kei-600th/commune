@@ -109,7 +109,7 @@ export default {
         {
           icon: 'mdi-apps',
           title: 'group',
-          to: '/group'
+          to: '/groups/group'
         }
       ],
       miniVariant: false,
