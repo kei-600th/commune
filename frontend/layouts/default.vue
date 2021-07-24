@@ -50,6 +50,34 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
+
+
+      <v-btn
+        class="ma-2"
+        color="orange darken-2"
+        dark
+      >新規登録
+      </v-btn>
+
+      <v-btn
+        class="ma-2"
+        color="primary"
+        dark
+      >
+        ログイン
+      </v-btn>
+
+      <v-btn
+        class="ma-2"
+        color="red"
+        dark
+      >
+        ログアウト
+      </v-btn>
+
+
+
+
       <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
